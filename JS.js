@@ -59,11 +59,26 @@ class MenuButtonActions {
     );
   }
 
-  setFocusToMenuitem(newMenuitem) {
-    this.menuitemNodes.forEach(function (item) {
-// TOUFIC'S COMMENT: Placeholder for the roving tabindex logic  ;)
-    });
-  }
+//   setFocusToMenuitem(newMenuitem) {
+//     this.menuitemNodes.forEach(function (item) {
+// // TOUFIC'S COMMENT: Placeholder for the roving tabindex logic  ;)
+//     });
+//   }
+
+setFocusToMenuitem(newMenuitem) {
+  // Week 10: Roving Tabindex (−1, 0)
+  // Move focus with Arrow keys: set new item tabindex=0, others −1, and apply focus
+
+  this.menuitemNodes.forEach(function (item) {
+    item.tabIndex = -1;
+    item.classList.remove('focus');
+  });
+
+  newMenuitem.tabIndex = 0;
+  newMenuitem.focus();
+  newMenuitem.classList.add('focus');
+}
+
 
   setFocusToFirstMenuitem() {
     this.setFocusToMenuitem(this.firstMenuitem);
